@@ -4,8 +4,8 @@ namespace JadLog;
 
 class Item {
 	protected $sku;
-	protected $price;
 	protected $width;
+	protected $price;
 	protected $agroup;
 	protected $length;
 	protected $height;
@@ -14,15 +14,24 @@ class Item {
 
 	public function __construct(array $options) {
 		$this->sku = $options['sku'];
-		$this->price = $options['price'];
 		$this->width = $options['width'];
+		$this->price = $options['price'];
 		$this->agroup = $options['agroup'];
 		$this->length = $options['length'];
 		$this->weigth = $options['weight'];
-		$this->amount = $options['amount'];
+		$this->amount = 'true';
 	}
 
 	public function toArray() : array {
-		return (array) $this;
+		return [
+			'sku' => $this->sku,
+			'quantidade' => $this->amount,
+			'valor' => $this->price,
+			'altura' => $this->height,
+			'comprimento' => $this->length,
+			'largura' => $this->width,
+			'peso' => $this->weigth,
+			'agrupar' => $this->agroup
+		];
 	}
 }

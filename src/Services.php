@@ -2,7 +2,7 @@
 
 namespace JadLog;
 
-use Item;
+use GuzzleHttp\Client;
 
 class Services extends JadLog {
 
@@ -15,6 +15,7 @@ class Services extends JadLog {
 
 	public function __construct() {
 		parent::__construct();
+		$this->cepSource = config('jadlog.cep_source');
 	}
 
 	public function setServices(array $services) : Object {
@@ -38,7 +39,7 @@ class Services extends JadLog {
 	public function setItems(array $items) : Object {
 		foreach($items as $k => $v) {
 			$item = new Item($v);
-			$this->items = $item->toArray();
+			$this->items[] = $item->toArray();
 		}
 
 		return $this;
@@ -47,7 +48,7 @@ class Services extends JadLog {
 	public function get() {
 		$client = new Client();
 
-		        try {
+		try {
             $response = $client->post($this->apiUrl,
                 [
                     'headers' => [
@@ -56,14 +57,14 @@ class Services extends JadLog {
 						'GMTOKEN' => parent::$gmtoken
                     ],
                     'json' => [
-                        'transportadora_codigos_servicos' => implode($this->services, ','),
+                        'transportadora_codigos_servicos' => blank($this->services) ? '' :implode($this->services, ','),
                         'cep_origem' => $this->cepSource,
 						'cep_destino' => $this->cepDestiny,
 						'volumes' => $this->items
                     ],
-                ]);
+				]);
 
-            return json_decode($response->getBody());
+            return new Response(json_decode($response->getBody()->getContents())->resposta[0]->calculos[0]);
         } catch (Exception $e) {
             return $e->getMessage();
         }
