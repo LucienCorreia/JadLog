@@ -1,0 +1,29 @@
+{
+	"name": "lucien-correia/jad-log",
+	"description": "JadLog SDK",
+	"license": "MIT",
+	"authors": [{
+		"name": "Lucien Risso Correia",
+		"email": "lucien@wadvice.com.br",
+		"homepage": "https://www.wadvice.com.br"
+	}],
+	"require": {
+		"php": ">=7.1",
+		"guzzlehttp/guzzle": "^6.3"
+	},
+	"require-dev": {
+
+	},
+	"autoload": {
+		"psr-4": {
+			"JadLog\\": "src/"
+		}
+	},
+	"extra": {
+		"laravel": {
+			"providers": [
+				"JadLog\\JadLogProvider"
+			]
+		}
+	}
+}
