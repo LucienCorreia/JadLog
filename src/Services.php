@@ -19,7 +19,7 @@ class Services extends JadLog {
 	}
 
 	public function setServices(array $services) : Object {
-		$this->services = $services;
+		$this->services = collect($services);
 
 		return $this;
 	}
@@ -57,14 +57,20 @@ class Services extends JadLog {
 						'GMTOKEN' => parent::$gmtoken
                     ],
                     'json' => [
-                        'transportadora_codigos_servicos' => blank($this->services) ? '' :implode($this->services, ','),
+                        'transportadora_codigos_servicos' => !blank($this->services) ? $this->services->implode(',') : '',
                         'cep_origem' => $this->cepSource,
 						'cep_destino' => $this->cepDestiny,
 						'volumes' => $this->items
                     ],
 				]);
 
-            return new Response(json_decode($response->getBody()->getContents())->resposta[0]->calculos[0]);
+			$return = [];
+
+			foreach (json_decode($response->getBody()->getContents())->resposta as $k => $v) {
+				$return[] = new Response($v->calculos[0]);
+			}
+
+            return $return;
         } catch (Exception $e) {
             return $e->getMessage();
         }

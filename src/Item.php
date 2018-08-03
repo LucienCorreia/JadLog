@@ -16,10 +16,11 @@ class Item {
 		$this->sku = $options['sku'];
 		$this->width = $options['width'];
 		$this->price = $options['price'];
-		$this->agroup = 'true';
+		$this->height = $options['height'];
 		$this->length = $options['length'];
-		$this->weigth = $options['weight'];
+		$this->weigth = $options['weigth'];
 		$this->amount = $options['amount'];
+		$this->agroup = 'true';
 	}
 
 	public function toArray() : array {
