@@ -18,25 +18,25 @@ class Services extends JadLog {
 		$this->cepSource = config('jadlog.cep_source');
 	}
 
-	public function setServices(array $services) : Object {
+	public function setServices(array $services) {
 		$this->services = collect($services);
 
 		return $this;
 	}
 
-	public function setCepSource($cep) : Object {
+	public function setCepSource($cep) {
 		$this->cepSource = $cep;
 
 		return $this;
 	}
 
-	public function setCepDestiny($cep) : Object {
+	public function setCepDestiny($cep) {
 		$this->cepDestiny = $cep;
 
 		return $this;
 	}
 
-	public function setItems(array $items) : Object {
+	public function setItems(array $items) {
 		foreach($items as $k => $v) {
 			$item = new Item($v);
 			$this->items[] = $item->toArray();
