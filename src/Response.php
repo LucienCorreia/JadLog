@@ -7,7 +7,7 @@ class Response {
 	public $price;
 	public $serviceName;
 
-	public function __construct(Object $response) {
+	public function __construct($response) {
 		$this->time = $response->prazo_estimado;
 		$this->price = $response->valor_frete;
 		$this->serviceName = $response->servico_nome;
