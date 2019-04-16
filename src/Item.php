@@ -2,16 +2,57 @@
 
 namespace JadLog;
 
+/**
+ * @author Lucien
+ * @link https://github.com/LucienCorreia/JadLog GitHub
+ */
 class Item {
+
+	/**
+	 * @var string SKU
+	 */
 	protected $sku;
+
+	/**
+	 * @var float Largura
+	 */
 	protected $width;
+
+	/**
+	 * @var float Preço
+	 */
 	protected $price;
+
+	/**
+	 * @var string Agrupar ('true' ou 'false')
+	 */
 	protected $agroup;
+
+	/**
+	 * @var float Comprimento
+	 */
 	protected $length;
+
+	/**
+	 * @var float Altura
+	 */
 	protected $height;
+
+	/**
+	 * @var float Peso
+	 */
 	protected $weigth;
+
+	/**
+	 * @var int Quantidade
+	 */
 	protected $amount;
 
+	/**
+	 * Seta os atributos
+	 * 
+	 * @param array $options
+	 */
 	public function __construct(array $options) {
 		$this->sku = $options['sku'];
 		$this->width = $options['width'];
@@ -23,6 +64,11 @@ class Item {
 		$this->agroup = 'true';
 	}
 
+	/**
+	 * Retorna o objeto Item
+	 * 
+	 * @return array
+	 */
 	public function toArray() : array {
 		return [
 			'sku' => $this->sku,

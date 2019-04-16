@@ -1,0 +1,84 @@
+<?php
+
+namespace JadLog;
+
+/**
+ * @author Lucien
+ * @link https://github.com/LucienCorreia/JadLog GitHub
+ */
+class Item {
+
+	/**
+	 * @var string SKU
+	 */
+	protected $sku;
+
+	/**
+	 * @var float Largura
+	 */
+	protected $width;
+
+	/**
+	 * @var float Preço
+	 */
+	protected $price;
+
+	/**
+	 * @var string Agrupar ('true' ou 'false')
+	 */
+	protected $agroup;
+
+	/**
+	 * @var float Comprimento
+	 */
+	protected $length;
+
+	/**
+	 * @var float Altura
+	 */
+	protected $height;
+
+	/**
+	 * @var float Peso
+	 */
+	protected $weigth;
+
+	/**
+	 * @var int Quantidade
+	 */
+	protected $amount;
+
+	/**
+	 * Seta os atributos
+	 * 
+	 * @param array $options
+	 */
+	public function __construct(array $options) {
+		$this->sku = $options['sku'];
+		$this->width = $options['width'];
+		$this->price = $options['price'];
+		$this->height = $options['height'];
+		$this->length = $options['length'];
+		$this->weigth = $options['weigth'];
+		$this->amount = $options['amount'];
+		$this->agroup = 'true';
+	}
+
+	/**
+	 * Retorna o objeto Item
+	 * 
+	 * @return array
+	 */
+	public function toArray() : array {
+		return [
+			'sku' => $this->sku,
+			'quantidade' => $this->amount,
+			'valor' => $this->price,
+			'altura' => $this->height,
+			'comprimento' => $this->length,
+			'largura' => $this->width,
+			'peso' => $this->weigth,
+			'agrupar' => $this->agroup
+		];
+	}
+}
