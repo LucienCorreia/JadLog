@@ -57,7 +57,7 @@ class Response {
 	 * 
 	 * @return int
 	 */
-	public function getTime() : int {
+	public function getTime() :? int {
 		return $this->time;
 	}
 }
