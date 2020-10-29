@@ -2,7 +2,7 @@
 
 Instale o pacote pelo composer
 
-``` composer require wadvice/jad-log ```
+``` composer require multiplier/jad-log ```
 
 Rode vendor:publish e selecione o número corespondente
 
