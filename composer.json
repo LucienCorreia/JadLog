@@ -1,11 +1,11 @@
 {
-	"name": "wadvice/jad-log",
+	"name": "multiplier/jad-log",
 	"description": "JadLog SDK",
 	"license": "MIT",
 	"authors": [{
 		"name": "Lucien Risso Correia",
-		"email": "lucien@wadvice.com.br",
-		"homepage": "https://www.wadvice.com.br"
+		"email": "lucien@multiplier.com.br",
+		"homepage": "https://www.multiplier.com.br"
 	}],
 	"require": {
 		"php": ">=7.1",
