@@ -1,4 +1,4 @@
-# JadLog - Laravel 5
+# JadLog - Laravel
 
 Instale o pacote pelo composer
 
